@@ -2,7 +2,7 @@
 docker kernel parameter
 
 * host pstree
- 호스트 OS pstree 는 아래와 같음
+호스트 OS pstree 는 아래와 같음
 systemd─┬─ModemManager───2*[{ModemManager}]
         ├─NetworkManager───2*[{NetworkManager}]
         ├─2*[abrt-watch-log]
@@ -25,6 +25,11 @@ systemd─┬─ModemManager───2*[{ModemManager}]
         │         │                 └─17*[{docker-containe}]
         │         ├─docker-proxy───7*[{docker-proxy}]
         │         └─15*[{dockerd}]
+
+* container os pstree
+root@55f73f3d91d7:/# pstree
+nginx---nginx
+
 
 kernel parameter는 해당 도커 OS 값으로 세팅된다.
 
