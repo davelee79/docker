@@ -1,3 +1,84 @@
 
-namespaces
- - unshare : 
+docker kernel parameter
+
+* host pstree
+ 호스트 OS pstree 는 아래와 같음
+systemd─┬─ModemManager───2*[{ModemManager}]
+        ├─NetworkManager───2*[{NetworkManager}]
+        ├─2*[abrt-watch-log]
+        ├─abrtd
+        ├─alsactl
+        ├─atd
+        ├─auditd─┬─audispd─┬─sedispatch
+        │        │         └─{audispd}
+        │        └─{auditd}
+        ├─avahi-daemon───avahi-daemon
+        ├─crond
+        ├─cupsd
+        ├─dbus-daemon───{dbus-daemon}
+        ├─dnsmasq───dnsmasq
+        ├─dockerd─┬─docker-containe─┬─docker-containe─┬─registry───7*[{registry}]
+        │         │                 │                 └─9*[{docker-containe}]
+        │         │                 ├─docker-containe─┬─bash
+        │         │                 │                 ├─nginx───nginx
+        │         │                 │                 └─9*[{docker-containe}]
+        │         │                 └─17*[{docker-containe}]
+        │         ├─docker-proxy───7*[{docker-proxy}]
+        │         └─15*[{dockerd}]
+
+kernel parameter는 해당 도커 OS 값으로 세팅된다.
+
+host ulimit -a
+
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 15037
+max locked memory       (kbytes, -l) 64
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 1024
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 15037
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+
+container os ulimit -a
+core file size          (blocks, -c) unlimited
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 15037
+max locked memory       (kbytes, -l) 64
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 65536
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) unlimited
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+
+실제 프로세스 커널 값
+core file size          (blocks, -c) unlimited
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 15037
+max locked memory       (kbytes, -l) 64
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 65536
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) unlimited
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
