@@ -82,3 +82,7 @@ cpu time               (seconds, -t) unlimited
 max user processes              (-u) unlimited
 virtual memory          (kbytes, -v) unlimited
 file locks                      (-x) unlimited
+
+
+* docker exec 로 /bin/bash 실행하여 접속
+docker exec -it thirsty_payne /bin/bash
