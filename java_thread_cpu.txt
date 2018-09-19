@@ -1,0 +1,6 @@
+
+java thread 중에 cpu 과점유 쓰레드를 확인하는 방법이다.
+
+
+[root]#  ps -mo pid,lwp,pcpu,start_time,time -p
+28391
