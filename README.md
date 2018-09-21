@@ -1,4 +1,4 @@
-# docker Application Profile
+# docker
 
 Java process Thread dump -> docker_java_threadump.txt
 
