@@ -66,6 +66,10 @@ kubectl get nodes
 
 kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
 
+kubectl proxy --address 0.0.0.0 --accept-hosts '.*'
+
+http://10.100.0.190:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login
+
 * heapster install
 git pull https://github.com/kubernetes/heapster.git
 
